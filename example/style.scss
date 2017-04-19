@@ -1,0 +1,47 @@
+#theparent {
+  width: 60%;
+  margin:0 auto;
+  border:1px solid black;
+  @media (max-width: 48em) {
+    /*padding: .2em;*/
+    width: 100%;
+  }
+}
+
+#controls {
+  width: 60%;
+  text-align: center;
+  border: 1px solid black;
+  margin:0 auto;
+  background-color: black;
+  overflow: auto;
+  padding-top: 1em;
+  margin-bottom: 1em;
+  @media (max-width: 48em) {
+    width: 100%;
+    padding-top: .5em;
+  }
+  .guillotine-button {
+    padding: .5em 1em;
+    color: #aaa;
+    &:hover {
+      color: white;
+    }
+    @media (max-width: 575px) {
+      padding: .5em;
+    }
+  }
+  #data {
+    margin-top: 1em;
+    margin-bottom:0;
+    padding: 1em;
+    color:#aaa;
+    background-color: #111;
+    list-style-type: none;
+    @media (max-width: 48em) {
+      margin-top: .5em;
+      font-size: .8em;
+    }
+  }
+}
+

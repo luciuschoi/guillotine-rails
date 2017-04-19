@@ -1,0 +1,63 @@
+<h2><%= title t('.page_title') %></h2>
+
+<div id="theparent">
+  <%= image_tag @picture.photo.url, id: "thepicture", class: 'img-fluid', data: { 'post-id': @picture.post.id, 'id': @picture.id } %>
+</div>
+
+<div id='controls'>
+  <%= link_to fa_icon("rotate-left"), '', id: 'rotate_left', class: 'guillotine-button', title: 'Rotate left' %>
+  <%= link_to fa_icon("search-minus"), '', id: 'zoom_out', class: 'guillotine-button', title: 'Zoom out' %>
+  <%= link_to fa_icon("arrows-alt"), '', id: 'fit', class: 'guillotine-button', title: 'Fit image' %>
+  <%= link_to fa_icon("search-plus"), '', id: 'zoom_in', class: 'guillotine-button', title: 'Zoom in' %>
+  <%= link_to fa_icon("rotate-right"), '', id: 'rotate_right', class: 'guillotine-button', title: 'Rotate right' %>
+  <ul id='data'>
+    <div class='column'>
+      <li style="display:inline;">x: <span id='x'></span></li>,
+      <li style="display:inline;">y: <span id='y'></span></li>
+    </div>
+    <div class='column'>
+      <li style="display:inline;">width:  <span id='w'></span></li>,
+      <li style="display:inline;">height: <span id='h'></span></li>
+    </div>
+    <div class='column'>
+      <li style="display:inline;">scale: <span id='scale'></span></li>,
+      <li style="display:inline;">angle: <span id='angle'></span></li>
+    </div>
+  </ul>
+</div>
+
+<%= form_for :picture, url: post_picture_path(@post, @picture), method: :put do |f| %>
+  <div class="row" style='width:400px;border:1px solid #ccc;margin:1em auto;'>
+    <div class="col-6">
+      <%= f.label 'crop_x' %>
+      <%= f.text_field 'crop_x' %>
+    </div>
+    <div class="col-6">
+      <%= f.label 'crop_y' %>
+      <%= f.text_field 'crop_y' %>
+    </div>
+    <div class="col-6">
+      <%= f.label 'crop_w' %>
+      <%= f.text_field 'crop_w' %>
+    </div>
+    <div class="col-6">
+      <%= f.label 'crop_h' %>
+      <%= f.text_field 'crop_h' %>
+    </div>
+    <div class='col-6'>
+      <%= f.label 'crop_scale' %>
+      <%= f.text_field 'crop_scale' %>
+    </div>
+    <div class="col-6">
+      <%= f.label 'crop_angle' %>
+      <%= f.text_field 'crop_angle' %>
+    </div>
+    <%# %w[x y w h angle scale].each do |attribute| %>
+      <%#= f.text_field "crop_#{attribute}" %>
+    <%# end %>
+  </div>
+  <div class="form-actions">
+    <%= f.button fa_icon('crop', text: t("actions.save")), type: 'submit', class: 'btn btn-outline-primary' %>
+    <%= link_to t('actions.list'), post_pictures_path(@post), class: 'btn btn-outline-primary' %>
+  </div>
+<% end %>
